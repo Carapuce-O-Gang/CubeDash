@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Portals : MonoBehaviour
 {
     public bool win;
-    public bool nextLevel;
 
     // Start is called before the first frame update
     void Start()
