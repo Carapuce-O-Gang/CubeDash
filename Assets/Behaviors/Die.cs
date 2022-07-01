@@ -23,7 +23,7 @@ public class Die : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("BasicLevel");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

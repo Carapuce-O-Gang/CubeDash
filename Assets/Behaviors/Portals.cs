@@ -27,6 +27,11 @@ public class Portals : MonoBehaviour
             {
                 SceneManager.LoadScene("mainMenu");
             }
+
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
     }
 }
