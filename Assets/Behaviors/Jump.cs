@@ -15,15 +15,15 @@ public class Jump : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if (reverseSpeed)
+        {
+            speed = -speed;
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (reverseSpeed)
-        {
-            speed = speed * -1;
-        }
         if (Input.GetKey(KeyCode.Space) && isGrounded())
         {
             rb.AddForce(new Vector3(0,jumpSpeed), ForceMode.Impulse);
