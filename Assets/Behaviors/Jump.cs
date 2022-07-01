@@ -34,7 +34,7 @@ public class Jump : MonoBehaviour
             Vector3 movementX = new Vector3(speed, 0, 0);
             rb.MovePosition(transform.position + movementX);
         }
-        else if (z)
+        else if (z && !isBlocked())
         {
             Vector3 movementZ = new Vector3(0, 0, speed);
             rb.MovePosition(transform.position + movementZ);
@@ -43,5 +43,10 @@ public class Jump : MonoBehaviour
     bool isGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, distToGround);
+    }
+
+    bool isBlocked()
+    {
+        return Physics.Raycast(transform.position, Vector3.forward, distToGround);;
     }
 }

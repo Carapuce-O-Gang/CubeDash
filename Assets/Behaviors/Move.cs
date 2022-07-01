@@ -7,41 +7,34 @@ public class Move : MonoBehaviour
     public int axis;
     public float speedRotation = 10f;
 
-    private float movement = 1.0f;
-    private float Xmax;
-    private float Xmin;
+    private float speed = 0.05f;
+    private float speedLeftRight = 0.05f;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.Xmax = this.transform.position.x + this.axis-1;
-        this.Xmin = this.transform.position.x;
+        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && this.transform.position.x > this.Xmin) 
+        if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))) 
         {
-            if (this.transform.position.x > this.movement){
-
-                this.transform.position = new Vector3(
-                    this.transform.position.x - 0.1f,
-                    this.transform.position.y,
-                    this.transform.position.z
-                );
-            }
+            this.transform.Translate(Vector3.left * speed);
+            this.transform.Translate(Vector3.forward * -1 * speedLeftRight/4);
         }
+        
 
-        if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.Q)) && this.transform.position.x < this.Xmax) 
+        else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.Q))) 
         {
-            this.transform.position = new Vector3(
-                this.transform.position.x + this.movement,
-                this.transform.position.y,
-                this.transform.position.z
-            );
+            this.transform.Translate(Vector3.right *speed);
+            this.transform.Translate(Vector3.forward * -1 * speedLeftRight/4);
+            
         }
+        
     }
     
 }
