@@ -5,6 +5,7 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     public int axis;
+    public float speedRotation = 10f;
 
     private float movement = 1.0f;
     private float Xmax;
@@ -23,11 +24,14 @@ public class Move : MonoBehaviour
         
         if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && this.transform.position.x > this.Xmin) 
         {
-            this.transform.position = new Vector3(
-                this.transform.position.x - this.movement,
-                this.transform.position.y,
-                this.transform.position.z
-            );
+            if (this.transform.position.x > this.movement){
+
+                this.transform.position = new Vector3(
+                    this.transform.position.x - 0.1f,
+                    this.transform.position.y,
+                    this.transform.position.z
+                );
+            }
         }
 
         if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.Q)) && this.transform.position.x < this.Xmax) 
